@@ -1,10 +1,23 @@
-import { Button, Container, Form, Nav, NavDropdown, Navbar, Offcanvas } from 'react-bootstrap'
+import { Button, Container, Form, Nav, NavDropdown, Navbar, Offcanvas } from 'react-bootstrap';
 
-import React from 'react'
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function HeaderComponent() {
+  const navigate = useNavigate();
+  const navigate1 = () => {
+    console.log("Page1 component");
+    navigate('/page1')
+  }
+  const navigate2 = () => {
+    console.log("Page2 component");
+    navigate('/page2')
+  }
+  const navigaet3 =()=>{
+    console.log("projects");
+    navigate('projects')
+  }
   return (
-    <>
     <div>
       <Navbar expand='sm' bg="info">
         <Container fluid>
@@ -18,11 +31,11 @@ export default function HeaderComponent() {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className='justify-content-start flex-grow-1 pe-3'>
-                <Nav.Link href='#action'>Home</Nav.Link>
-                <Nav.Link href="#action2">Link</Nav.Link>
+                <Nav.Link to='/'>Home</Nav.Link>
+                <Nav.Link onClick={navigate1}>Link</Nav.Link>
                 <NavDropdown title='Dropdown' id="offcanvasNavbarDropdown-expand-sm">
-                  <NavDropdown.Item href="#action3">Action1</NavDropdown.Item>
-                  <NavDropdown.Item href="#action4">Action2</NavDropdown.Item>
+                  <NavDropdown.Item onClick={navigate2}>Action1</NavDropdown.Item>
+                  <NavDropdown.Item onClick={navigaet3}>Action2</NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item href='#action5'>
                     Something else here
@@ -42,8 +55,7 @@ export default function HeaderComponent() {
           </Navbar.Offcanvas>
         </Container>
       </Navbar >
-
     </div>
-    </>
+
   )
 }
